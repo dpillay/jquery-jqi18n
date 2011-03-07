@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<project name="yui-compressor-ant-task-example" default="dist">
+
+    <property name="yui-compressor.jar" location="./lib/yuicompressor-2.4.2.jar" />
+    <property name="yui-compressor-ant-task.jar" location="./lib/yui-compressor-ant-task-0.5.jar" />
+
+    <path id="task.classpath">
+        <pathelement location="${yui-compressor.jar}" />
+        <pathelement location="${yui-compressor-ant-task.jar}" />
+    </path>
+    <target name="define-ant-task">
+        <taskdef name="yui-compressor" classname="net.noha.tools.ant.yuicompressor.tasks.YuiCompressorTask">
+            <classpath refid="task.classpath" />
+        </taskdef>
+    </target>
+    <target name="dist" depends="define-ant-task">
+        <yui-compressor warn="false" munge="true" jsSuffix=".min.js" preserveallsemicolons="false" fromdir="." todir=".">
+            <include name="*.js" />
+        </yui-compressor>
+    </target>
+</project>
