@@ -1,0 +1,42 @@
+jquery-i18n
+v1.0.0
+
+~ Supports internationalization of your jQuery code.
+
+To include jquery-i18n, you'll need:
+
+<code>
+<script
+    type="text/javascript"
+    src="./js/jquery-1.4.4.min.js"></script>
+
+<script
+    type="text/javascript"
+    src="./js/jquery.jqi18n.js"></script>
+</code>
+
+Sample client side code:
+
+<code>
+$(document).ready(function() {
+    // 1. Setting the dictionary
+    $.jqi18n("dictionary", {
+        common : {
+            greeting : "Hello! {0} {1}",
+            title : {
+                text : "Yippe!"
+            }
+        }
+    });
+
+    // 2. Using jqi18n on the client side.
+    var msg = $.jqi18n("common.greeting", "jquery", "user");
+    $("#demo_label").html(msg);
+});
+</code>
+
+Notes:
+1. The 'dictionary' needs to be set from your *-locale.js files.
+2. The dictionary is basically a multi-level javascript object.
+3. The client code can then call $.jqi18n(key [, params]) from where the localization is needed.
+4. Parameters are runtime replacements for the {*} markers placed on the dictionary if required. Parameters can either be passed as an array or simple arguments. When a parameter is not found for replacement, a null string ("") is returned.

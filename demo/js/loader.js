@@ -7,6 +7,6 @@ $(document).ready(function() {
             }
         }
     });
-    var msg = $.jqi18n("common.title.text", "jquery", "Dinesh");
+    var msg = $.jqi18n("common.greeting", "jquery", "user");
     $("#demo_label").html(msg);
 });
